@@ -1,0 +1,64 @@
+<!doctype html>
+<html> 
+ <head> 
+  <title>chat box</title> 
+  <link rel="stylesheet" type="text/css" href="styles.css"> 
+ <style type="text/css" id="dcoder_stylesheet">.chat-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+#chat-box {
+  height: 300px;
+  overflow-y: scroll;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+#user-input {
+  width: calc(100% - 70px);
+  padding: 5px;
+  margin-right: 5px;
+}
+
+button {
+  padding: 5px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}</style></head> 
+ <body> 
+  <div class="chat-container"> 
+   <div id="chat-box"></div> 
+   <input type="text" id="user-input" placeholder="type your message..."> <button onclick="sendMessage()">send</button> 
+  </div> 
+  <script src="script.js"></script> 
+ 
+<script type="text/javascript" id="dcoder_script">function generateRandomName() {
+  const names = ["أحمد", "محمد", "سارة", "فاطمة", "علي", "نور"];
+  return names[Math.floor(Math.random() * names.length)];
+}
+
+function displayMessage(message, sender) {
+  const chatBox = document.getElementById("chat-box");
+  const messageDiv = document.createElement("div");
+  messageDiv.textContent = `${sender}: ${message}`;
+  chatBox.appendChild(messageDiv);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function sendMessage() {
+  const message = document.getElementById("user-input").value;
+  if (message.trim() !== "") {
+    const randomName = generateRandomName();
+    displayMessage(message, randomName);
+    document.getElementById("user-input").value = "";
+  }
+}</script></body></html>
